@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Weather and News History</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!-- Enter city information -->
+  <div *ngIf="cities != undefined">
+
+    <!-- clear history button, calls user-requested save  -->
+    <button ion-button full [disabled]="disableButton" (click)="clearHistory()">Clear History</button>
+
+    <!-- Loop over data for each city -->
+    <div *ngFor="let city of cities">
+
+      <!-- Create a card for each location -->
+      <ion-card>
+
+        <!-- weather content goes in the header -->
+        <ion-item>
+          <ion-avatar item-start>
+            <img [src]="cityData[city].weatherIcon"/>
+          </ion-avatar>
+          <h1>City: {{city}} </h1>
+          <p>Temperature: {{cityData[city].temperature}}</p>
+          <p>(Unit: {{cityData[city].units}}) {{cityData[city].weatherMain}}</p>
+        </ion-item>
+
+        <!-- set the news content of the card in the body -->
+        <ion-card-content>
+
+          <!-- iterate over articles -->
+          <div *ngFor="let article of cityData[city].articles">
+            <ion-item>
+              <ion-avatar item-start>
+                <img [src]="article.urlToImage" alt="Image not found">
+              </ion-avatar>
+              <a [href]="article.url" target="_blank">
+                <p>{{article.title}}</p>
+              </a>
+            </ion-item>
+          </div>          
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+</ion-content>

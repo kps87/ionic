@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!-- Enter city information -->
+  <h1 class="title">City</h1>
+    <ion-item id="rounded">
+      <ion-input type="text" [(ngModel)]="city"></ion-input>
+    </ion-item>
+
+  <!-- print a header -->
+  <h1 class="title">Settings</h1>
+  <br>
+
+  <!-- Select units -->
+  <p>Unit Selection:</p>
+  <ion-list radio-group [(ngModel)]="units">
+
+    <ion-item>
+      <ion-label>Standard</ion-label>
+      <ion-radio value="standard"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Metric</ion-label>
+      <ion-radio value="metric"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Imperial</ion-label>
+      <ion-radio value="imperial"></ion-radio>
+    </ion-item>
+
+  </ion-list>
+
+  <!-- save button, calls user-requested save  -->
+  <button ion-button (click)="save()">Save Settings</button>
+
+</ion-content>

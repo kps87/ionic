@@ -1,0 +1,84 @@
+<ion-header>
+
+  <!-- navbar settings  -->
+  <ion-navbar>
+
+    <!-- title = studend id -->
+    <ion-title>
+      G00221349
+    </ion-title>
+
+    <!-- add settings button to rhs of navbar -->
+    <ion-buttons end>
+      <button ion-button icon-only [disabled]="disableHistoryButton" (click)="openHistoryPage()">
+        <ion-icon name="cloud-outline"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="openSettingsPage()">
+        <ion-icon name="ios-settings" md="md-settings"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <h1 class="title">Weather for {{city}}</h1>
+  <h2 *ngIf="validCityFound == false then invalidWeatherTemplate else validWeatherTemplate">City not found</h2>
+
+  <ng-template #invalidWeatherTemplate>
+    <br>
+    <h2>City not found</h2>
+    <p>({{weatherDescription}})</p>
+    <h2>Temperature: {{temperature}}</h2>
+    <p>(Feels like: {{feelsLike}})</p>
+  </ng-template>
+  
+  <ng-template #validWeatherTemplate>
+    <div *ngIf="weatherIcon != undefined">
+      <img [src]="weatherIcon">
+    </div>
+
+    <h2>{{weatherMain}}</h2>
+    <p>({{weatherDescription}})</p>
+    <h2>Temperature: {{temperature}}</h2>
+    <p>(Feels like: {{feelsLike}})</p>
+  </ng-template>
+  <hr>
+
+  <!-- button which controls news  -->
+  <button ion-button [disabled]="disableNewsButton" (click)="showArticles()">News</button>
+
+  <!-- if showNews boolean is defined, show the total news stories, and loop over each article to print its data -->
+  <div *ngIf="showNews">
+
+    <!-- print total number of stories -->
+    <br>
+    <h2>Total News Stories from {{country}}: {{totalStories}}</h2>
+    <hr>
+    <br>
+
+    <!-- loop over articles -->
+    <div *ngFor="let article of articles">
+
+      <!-- show image -->
+      <a [href]="article.url" target="_blank">
+        <img [src]="article.urlToImage" width="250" alt="Image not found">
+      </a>
+      <!-- show article title -->
+      <a [href]="article.url" target="_blank">
+        <p>{{article.title}}</p>
+      </a>
+      <!-- show article descriptions -->
+      <a [href]="article.url" target="_blank">
+        <p>{{article.description}}</p>
+      </a>
+    <hr>
+    </div>
+    <hr>
+
+  </div>
+  <hr>
+
+</ion-content>
