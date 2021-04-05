@@ -1,9 +1,6 @@
 -----------------------------------------------------------------------------------------------
 Author: Kieran Somers
-E-mail: G00221349@gmit.ie
-
-The following command was used to create the project:
-	ionic start G00221349 blank --type=ionic-angular
+E-mail: kieransomers87@gmail.com
 
 This app was developed with the following software/operating system versions.
 
